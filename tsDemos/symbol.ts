@@ -12,7 +12,13 @@ console.log(chalk.red('\n\n--------- Symbol.hasInstance -------'));
 const obj: Object = {};
 const arr: Array<number> = [1,2,3,4];
 const arr2: Array<number> = [5,6,7];
+class MyArray {
+    static [Symbol.hasInstance](instance) {
+        return Array.isArray(instance);
+    }
+}
 console.log(`is instanceof array: ${Array[Symbol.hasInstance](arr)}`);
+console.log(`is instanceof array: ${arr instanceof MyArray}`);
 
 console.log(chalk.red('\n\n--------- Symbol.isConcatSpreadable -------'));
 console.log(`arr concat`, arr.concat(arr2));
@@ -28,13 +34,13 @@ console.log(`arr concat when isConcatSpreadable is false`, arr.concat(arr2));
 const x: Array<number & number> = [1, 2, 3];
 const fakeArray = { 
   [Symbol.isConcatSpreadable]: true, 
-  length: 2, 
+  length: 2,
   0: 'hello',
   1: 'world' 
 }
 
-x.concat(fakeArray); // [1, 2, 3, "hello", "world"]
-console.log('output fake array', x);
+; // [1, 2, 3, "hello", "world"]
+console.log('output fake array11', x.concat(fakeArray));
 
 
 console.log(chalk.red('\n\n--------- Symbol.iterator -------'));
@@ -50,6 +56,10 @@ iterable1[Symbol.iterator] = function* () {
 };
 
 console.log([...iterable1]);
+
+for(const a of iterable1) {
+    console.log(a);
+}
 
 
 console.log(chalk.red('\n\n--------- Symbol.match -------'));
@@ -68,12 +78,15 @@ Object.defineProperty(fooReg, Symbol.match, {
 console.log('Symbol.match foo result', '/foo/'.startsWith(fooReg));
 console.log('Symbol.match baz result:', '/baz/'.endsWith(fooReg));
 
-Object.defineProperty(fooReg, Symbol.match, {
+const fooReg2 = /foo/;
+console.log('Symbol.match foo result222' + '/foo/'.match(fooReg2));
+Object.defineProperty(fooReg2, Symbol.match, {
     value: (...args) => {
         console.log(...args);
         return false;
     }
 });
+console.log('Symbol.match foo result111', '/foo/'.match(fooReg2));
 console.log('Symbol.match foo result', '/foo/'.startsWith('foo'));
 
 
@@ -126,11 +139,12 @@ console.log('custom split content', 'foo'.split(spliter));
 console.log(chalk.red('\n\n--------- Symbol.toPrimitive -------'));
 /* Symbol.toPrimitive */
 const object1 = {
+    a: 12,
     [Symbol.toPrimitive](hint: string) {
         if (hint === 'number') {
             return 42;
         } else if (hint === 'string') {
-            return '444';
+            return this.a;
         }
         return null;
     }

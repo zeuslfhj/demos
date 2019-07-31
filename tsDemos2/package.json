@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "reflect-metadata": "^0.1.13"
+  },
+  "name": "tsDemos2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
