@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GraphQL Test</title>
+</head>
+<body>
+    <center>
+        <div class="form">
+            <label for="query">请求</label>
+            <input id="query" type="text" name="query" />
+            <button id="sendQuery">search</button>
+        </div>
+        <div id="resultOutput" class="result"></div>
+    </center>
+</body>
+<script>
+    function $(domId) {
+        return document.getElementById(domId);
+    }
+    function submit() {
+        const query = $('query').value;
+        fetch('./query', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            },
+            body: JSON.stringify({
+                query
+            })
+        }).then((resp) =>{
+            return resp.json();
+        }).then((ret) => {
+            $('resultOutput').innerText = JSON.stringify(ret);
+        }).catch((err) => {
+            console.error('fetch query failed', err);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        $('sendQuery').addEventListener('click', submit);
+    });
+</script>
+</html>
