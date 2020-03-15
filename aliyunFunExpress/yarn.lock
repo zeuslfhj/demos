@@ -130,12 +130,11 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@webserverless/fc-express@0.1.0-next.ed155677":
-  version "0.1.0-next.ed155677"
-  resolved "https://registry.npm.taobao.org/@webserverless/fc-express/download/@webserverless/fc-express-0.1.0-next.ed155677.tgz#0d2e95c2ae7b330db1fa8d77f6ae600632d25a4b"
+"@webserverless/fc-express@latest":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@webserverless/fc-express/-/fc-express-0.1.3.tgz#3427290c85835ff7f1685128fad5cfc2d1d69e3a"
   dependencies:
     binary-case "^1.1.4"
-    express "^4.17.0"
     type-is "^1.6.18"
     url "^0.11.0"
 
@@ -163,8 +162,8 @@ acorn-dynamic-import@^4.0.0:
   resolved "https://registry.npm.taobao.org/acorn-dynamic-import/download/acorn-dynamic-import-4.0.0.tgz#482210140582a36b83c3e342e1cfebcaa9240948"
 
 acorn@^6.0.5:
-  version "6.1.1"
-  resolved "https://registry.npm.taobao.org/acorn/download/acorn-6.1.1.tgz#7d25ae05bb8ad1f9b699108e1094ecd7884adc1f"
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.4.1.tgz#531e58ba3f51b9dacb9a6646ca4debf5b14ca474"
 
 ajv-errors@^1.0.0:
   version "1.0.1"
@@ -1276,6 +1275,10 @@ duplexify@^3.4.2, duplexify@^3.6.0:
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.npm.taobao.org/ee-first/download/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
+
+ejs@^2.6.2:
+  version "2.7.4"
+  resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.7.4.tgz#48661287573dcc53e366c7a1ae52c3a120eec9ba"
 
 electron-to-chromium@^1.3.47:
   version "1.3.131"
